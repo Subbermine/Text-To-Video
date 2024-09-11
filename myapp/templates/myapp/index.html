@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FakeOff - Deepfake Detection</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'myapp/stylesheet.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Online AI based Video Generator</h2>
+      </div>
+      <div class="main">
+        <div class="aside">
+          <h2><a href="#">About Us</a></h2>
+          <h2><a href="#">Our Project</a></h2>
+          <h2><a href="#">Explore Other tools</a></h2>
+        </div>
+        <div class="content">
+          <h2>Give a detailed explanation of your desired video and hit GO!</h2>
+          <form method="post" action="{% url 'process_form' %}">
+            {% csrf_token %}
+            <textarea
+              name="prompt"
+              placeholder="Example prompt: A street artist, clad in a worn-out denim jacket and a colorful bandana, stands before a vast concrete wall in the heart, holding a can of spray paint, spray-painting a colorful bird on a mottled wall."
+              id="prompt"
+            ></textarea>
+            <br /><br />
+            <label>Select video length: <span id="sliderVal"></span> sec </label
+            ><br />
+            <input
+              type="range"
+              min="5"
+              max="60"
+              value="6"
+              class="slider"
+              id="myRange"
+            />
+            <br /><br />
+            <button type="submit" id="goButton"><b>GO!</b></button>
+          </form>
+          <div id="loader"></div>
+        </div>
+        <div class="content" id="output">
+          <h3>Your video is generated here !!</h3>
+          <video autoplay controls loop>
+            <source
+              id="vid"
+              src="{% static 'videos/spm.mp4' %}"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'myapp/script.js' %}"></script>
+  </body>
+</html>
