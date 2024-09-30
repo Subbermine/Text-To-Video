@@ -1,16 +1,14 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
 
-def mypage(request):
-    return render(request,'myapp/index.html')
 
-def process_form_view(request):
-    if request.method == 'POST':
-        prompt = request.POST.get('prompt')
-
-        video_url = 'videos/spm.mp4'
-
+def home(request):
+    if request.method == "POST":
+        prompt = request.POST.get("prompt")
         print(f"Prompt: {prompt}")
-        return render(request, 'video_display.html', {'video_url': video_url})
+        return redirect("second_page")
+    return render(request, "myapp/index.html")
 
 
-    return redirect('mypage')
+def secondpage(request):
+    return render(request, "myapp/second.html")
