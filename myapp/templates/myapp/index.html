@@ -1,59 +1,74 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Video Generation</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'myapp/stylesheet.css' %}" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="header">
-        <h2>Online AI based Video Generator</h2>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Video Generation</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'myapp/stylesheet.css' %}" />
+</head>
+
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <div class="container">
+    <div class="header">
+      <h2>Online AI based Video Generator</h2>
+    </div>
+    <div class="main">
+      <div class="aside">
+        <h2><a href="#">About Us</a></h2>
+        <h2><a href="#">Our Project</a></h2>
+        <h2><a href="#">Explore Other tools</a></h2>
       </div>
-      <div class="main">
-        <div class="aside">
-          <h2><a href="#">About Us</a></h2>
-          <h2><a href="#">Our Project</a></h2>
-          <h2><a href="#">Explore Other tools</a></h2>
-        </div>
-        <div class="content">
-          <h2>Give a detailed explanation of your desired video and hit GO!</h2>
-          <form method="POST" action="{% url 'home' %}" id="videoForm">
-            {% csrf_token %}
-            <textarea
-              name="prompt"
-              placeholder="Example Prompt: A street artist, clad in a worn out denim jacket and a colourful bandana, stands before a vast concrete wall in the heart, spray-painting a colourful bird on the wall."
-              id="prompt"
-            ></textarea>
-            <br /><br />
-            <label>Select video length: <span id="sliderVal"></span> sec </label
-            ><br />
-            <input
-              type="range"
-              min="5"
-              max="60"
-              value="6"
-              class="slider"
-              id="myRange"
-            />
-            <br /><br />
-            <button type="submit" id="goButton">
-              <b>GO!</b>
-            </button>
-          </form>
-          <div id="loader"></div>
-        </div>
-        <div class="content" id="output">
-          <h3>Your video is generated here !!</h3>
-          <video autoplay id="video_control" controls loop>
-            <source id="video_source" type="video/mp4" />
-          </video>
-        </div>
+      <div class="content">
+        <h2 style="font-size: 1.3em; font-family: 'Segoe UI';">Give a detailed explanation of your desired video and hit
+          GO!</h2>
+        <form method="POST" action="{% url 'home' %}" id="videoForm">
+          {% csrf_token %}
+          <textarea name="prompt"
+            placeholder="Example Prompt: A street artist, clad in a worn out denim jacket and a colourful bandana, stands before a vast concrete wall in the heart, spray-painting a colourful bird on the wall."
+            id="prompt"></textarea>
+          <br /><br />
+          <label>Select video length: <span id="sliderVal"></span> </label><!--<br />
+          nput type="range" min="6" max="30" value="6" class="slider" id="myRange" />-->
+          <input type="number" name="numberInput" value="6" id="numberInput" max="30" min="6">
+          <label>sec</label>
+          <br /><br />
+          <button type="submit" id="goButton" style="font-family: 'Segoe UI';">
+            <b>GO!</b>
+          </button>
+        </form>
+        <div id="loader"></div>
+      </div>
+      <div class="content" id="output">
+        <h3 style="font-family: 'Segoe UI';">Your video will be generated here !!</h3>
+        <video autoplay id="video_control" controls loop>
+          <source id="video_source" type="video/mp4" />
+        </video>
       </div>
     </div>
-    <script src="{% static 'myapp/script.js' %}"></script>
-  </body>
+  </div>
+  <script src="{% static 'myapp/script.js' %}"></script>
+</body>
+<input type="number" id="numberInput">
+
+<script>
+  const input = document.getElementById('numberInput');
+
+  // Prevent manual input
+  input.addEventListener('keydown', function (event) {
+    if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') {
+      event.preventDefault();
+    }
+  });
+
+  // Optional: Handle the input value change programmatically
+  input.addEventListener('change', function () {
+    // You can add any logic here to handle the value change
+    console.log("Input value changed to:", input.value);
+  });
+</script>
+
+
 </html>

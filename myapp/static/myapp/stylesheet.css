@@ -1,15 +1,17 @@
 body,
 html {
-  font-family: "Calibri";
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
   height: 100%;
 }
+
 .container {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
+
 .header {
   background-color: #4caf50;
   color: white;
@@ -20,10 +22,12 @@ html {
   border-bottom-right-radius: 50%;
   box-shadow: 0 0 10px rgb(0, 0, 0);
 }
+
 .main {
   display: flex;
   flex: 1;
 }
+
 .aside {
   flex: 0 0 10%;
   background-color: #f0f0f0;
@@ -31,9 +35,10 @@ html {
   border-top-right-radius: 25%;
   border-bottom-right-radius: 100%;
 }
+
 .content {
   width: 30vw;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   flex: 1;
   background-color: #ffffff;
   padding-top: 20px;
@@ -80,9 +85,11 @@ input[type="range"] {
   -webkit-transition: 0.2s;
   transition: opacity 0.2s;
 }
+
 .slider:hover {
   opacity: 1;
 }
+
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -92,6 +99,7 @@ input[type="range"] {
   background: #4caf50;
   cursor: pointer;
 }
+
 .slider::-moz-range-thumb {
   width: 20px;
   height: 20px;
@@ -124,9 +132,11 @@ button[type="submit"] {
   border: solid 1px #5e5e5e;
   box-shadow: 0 0 6px rgb(0, 0, 0);
 }
+
 button:active {
   box-shadow: 0 0 2px;
 }
+
 #loader {
   display: none;
   border: 16px solid #f3f3f3;
@@ -146,10 +156,12 @@ button:active {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
+
 video {
   width: 90%;
   height: auto;
